@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Categories, Footer, Header, LoadingPizzaBlock, PizzaBlock, SortPopUp} from "../components";
 import {Helmet} from "react-helmet";
 
@@ -24,16 +24,16 @@ function HomePage () {
 
     useEffect(() => {
         dispatch(fetchPizzas(category,sortBy))
-    }, [category, sortBy]);
+    }, [category, sortBy, dispatch]);
 
 
     const onSelectCategory = useCallback(index => {
         dispatch(setCategory(index));
-    }, []);
+    }, [dispatch]);
 
     const onSelectSortType = useCallback((type) => {
         dispatch(setSortBy(type));
-    }, []);
+    }, [dispatch]);
 
     const clickedOnAddPizza = (obj) => {
         dispatch(addItemToCart(obj));

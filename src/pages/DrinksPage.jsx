@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Categories, DrinkBlock, Footer, Header, LoadingDrinkBlock,SortPopUp} from "../components";
 import { Helmet } from 'react-helmet';
 
@@ -31,16 +31,16 @@ function DrinksPage () {
 
     useEffect(() => {
         dispatch(fetchDrinks(category,sortBy))
-    }, [category, sortBy]);
+    }, [category, sortBy, dispatch]);
 
 
     const onSelectCategory = useCallback(index => {
         dispatch(setCategory(index));
-    }, []);
+    }, [dispatch]);
 
     const onSelectSortType = useCallback((type) => {
         dispatch(setSortBy(type));
-    }, []);
+    }, [dispatch]);
 
     const clickedOnAddDrink = (obj) => {
         dispatch(addItemToCart(obj));

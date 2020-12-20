@@ -1,6 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import DrinkBlock from "./DrinkBlock";
 import {Button} from "../index";
 
 const PizzaBlock = ({id, name, img, sizes, price, onClickAddPizza, addedCart}) => {

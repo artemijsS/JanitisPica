@@ -1,7 +1,7 @@
 import React from 'react';
 import {CartItem, Footer, Header, Button} from "../components";
 import {Helmet} from "react-helmet";
-import {Link, NavLink} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {clearCart, minusItem, plusItem, removeItem} from "../redux/actions/cart";
 
@@ -10,20 +10,21 @@ function CartPage () {
     const dispatch = useDispatch();
 
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart)
-
     // console.log(Object.keys(items))
     // console.log(items)
 
     let cartItems = [];
 
+    // eslint-disable-next-line array-callback-return
     Object.keys(items).map(id => {
+        // eslint-disable-next-line array-callback-return
         Object.keys(items[id]).map(obj => {
             // console.log(items[id][obj])
             cartItems.push(items[id][obj])
         })
     });
 
-    // console.log(cartItems)
+    console.log(cartItems)
 
     const onClearCart = () => {
         if (window.confirm('Vai jūs tiešām gribāt dzēst grozu?')) {
@@ -51,9 +52,11 @@ function CartPage () {
             totalCount: totalCount
         }
 
+        // eslint-disable-next-line array-callback-return
         Object.keys(items).map((id) => {
             let itemsID = Object.keys(items[id]);
             itemsID.pop();
+            // eslint-disable-next-line array-callback-return
             itemsID.map((param) => {
                 console.log(items[id][param])
                 finalCart.items.push(items[id][param]);
@@ -112,6 +115,7 @@ function CartPage () {
                         </div>
                         <div className="content__items">
                             {
+                                // eslint-disable-next-line array-callback-return
                                 cartItems.map((obj, i) => {
                                     let tmp = Object.keys(obj)
                                     if (tmp[0]) {
@@ -139,7 +143,7 @@ function CartPage () {
                                 <span> Kopā: <b>{totalCount} gab.</b> </span>
                                 <span> Summa: <b>{totalPrice} €</b> </span>
                             </div>
-                            <div to="/home" className="cart__bottom-buttons">
+                            <div className="cart__bottom-buttons">
                                 <Link to="/home" className="button button--outline button--add go-back-btn">
                                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +163,7 @@ function CartPage () {
                     <div className="cart--empty">
                         <div className="cart--empty--block">
                             <h1 className="cart--empty--text">Iepirkumu grozs ir tukšs!</h1>
-                            <div to="/home" className="cart__bottom-buttons empty">
+                            <div className="cart__bottom-buttons empty">
                                 <Link to="/home" className="button button--outline button--add go-back-btn">
                                     <span>Pie picām!</span>
                                 </Link>
