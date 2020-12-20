@@ -24,7 +24,7 @@ function CartPage () {
         })
     });
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
     const onClearCart = () => {
         if (window.confirm('Vai jūs tiešām gribāt dzēst grozu?')) {
