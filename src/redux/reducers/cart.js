@@ -1,7 +1,7 @@
 const initialState = {
-    items: {},
-    totalPrice: 0,
-    totalCount: 0,
+    items: localStorage.getItem('redux-store') ? JSON.parse(localStorage.getItem('redux-store')).cart.items : {},
+    totalPrice: localStorage.getItem('redux-store') ? JSON.parse(localStorage.getItem('redux-store')).cart.totalPrice : 0,
+    totalCount: localStorage.getItem('redux-store') ? JSON.parse(localStorage.getItem('redux-store')).cart.totalCount : 0,
 }
 
 // const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
