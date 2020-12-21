@@ -876,6 +876,12 @@ a {
     width: 70px;
   }
   .content {
-    padding: 70px 0 0 0;
+    padding: 50px 0 0 0;
+  }
+  .header {
+    height: 130px;
+  }
+  .content__items {
+    justify-content: space-between;
   }
 }
