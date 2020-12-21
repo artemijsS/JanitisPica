@@ -11,7 +11,8 @@ const categoryNames = ['Bezalkohola', 'Alkohola'];
 
 const sortItems = [
     { name: 'popularitātes', type: 'rating', order: 'desc' },
-    { name: 'cenas', type: 'price[0]', order: 'asc' },
+    { name: 'cenas (no augšas)', type: 'price[0]', order: 'desc' },
+    { name: 'cenas (no lejas)', type: 'price[0]', order: 'asc' },
     { name: 'alfabēta', type: 'name', order: 'asc' },
 ];
 
@@ -61,7 +62,7 @@ function DrinksPage () {
                             items={categoryNames}
                         />
                         <SortPopUp
-                            activeSort={sortBy.type}
+                            activeSort={sortBy}
                             onClickItem={onSelectSortType}
                             items={sortItems}
                         />

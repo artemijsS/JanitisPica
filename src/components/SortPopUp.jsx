@@ -7,7 +7,7 @@ const SortPopUp = React.memo(({activeSort, items, onClickItem}) => {
     const sortRef = useRef();
     // console.log(activeSort);
     // console.log(items.type);
-    const activeName = items.find((obj) => obj.type === activeSort).name;
+    const activeName = items.find((obj) => obj.type === activeSort.type && obj.order === activeSort.order).name;
 
 
     const onSelectedItem = (index) => {
@@ -22,14 +22,21 @@ const SortPopUp = React.memo(({activeSort, items, onClickItem}) => {
     };
 
     const handleOutsideClick = (e) => {
-        if (!e.path.includes(sortRef.current)) {
+        if (!e.composedPath().includes(sortRef.current)) {
             setVisiblePopUp(false);
         }
     }
 
     useEffect(() => {
-        document.body.addEventListener('click', handleOutsideClick)
+        let test = true;
+        if (test) {
+            document.body.addEventListener('click', handleOutsideClick)
+        }
+        return () => {
+            document.body.removeEventListener('click', handleOutsideClick);
+        };
     }, [])
+
 
 
     return (
@@ -49,7 +56,7 @@ const SortPopUp = React.memo(({activeSort, items, onClickItem}) => {
                         {items && items.map((obj, i) => {
                             return (
                                 <li
-                                    className={activeSort === obj.type ? 'active' : ''}
+                                    className={activeSort === obj.type && obj.order === activeSort.order ? 'active' : ''}
                                     onClick={() => onSelectedItem(obj)}
                                     key={`${obj.name}_${i}`}
                                 >
@@ -66,7 +73,7 @@ const SortPopUp = React.memo(({activeSort, items, onClickItem}) => {
 });
 
 SortPopUp.propTypes = {
-    activeSort: PropTypes.string.isRequired,
+    activeSort: PropTypes.object.isRequired,
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
     onClickItem: PropTypes.func.isRequired,
 };
