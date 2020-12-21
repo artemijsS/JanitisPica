@@ -884,4 +884,13 @@ a {
   .content__items {
     justify-content: space-around;
   }
+  .content__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    max-width: 1200px;
+    gap: 2rem;
+    align-items: center;
+    grid-column-gap: 2rem;
+
+  }
 }
