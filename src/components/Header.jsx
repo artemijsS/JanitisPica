@@ -21,7 +21,7 @@ export const Header = ({ activeIndex }) => {
             <div className="container">
                 <Link to="/">
                     <div className="header__logo">
-                        <img width="150" src={logo} alt="Pizza logo"/>
+                        <img src={logo} alt="Pizza logo"/>
                         <div>
                             <h1>JĀNĪTIS</h1>
                             <p>labaka pica</p>
