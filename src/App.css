@@ -53,7 +53,7 @@ a {
   z-index: 2;
   padding: 40px 0;
   min-height: 176px;
-  position: fixed;
+  /*position: fixed;*/
   width: calc(100vw - 100px);
   max-width: 1400px;
   margin: auto;
