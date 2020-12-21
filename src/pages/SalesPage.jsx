@@ -8,7 +8,7 @@ function SalesPage () {
     return (
         <div>
             <Helmet>
-                <title>Akcijas</title>
+                <title>Akcijas | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={2} />
             <div className="content">

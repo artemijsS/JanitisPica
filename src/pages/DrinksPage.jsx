@@ -49,7 +49,7 @@ function DrinksPage () {
     return (
         <div>
             <Helmet>
-                <title>Dzērieni</title>
+                <title>Dzērieni | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={1} />
             <div className="content">

@@ -70,7 +70,7 @@ function CartPage () {
     return (
         <div>
             <Helmet>
-                <title>Grozs</title>
+                <title>Grozs | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={null}/>
             <div className="content">

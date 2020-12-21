@@ -43,7 +43,7 @@ function HomePage () {
     return (
         <div>
             <Helmet>
-                <title>Picas</title>
+                <title>Picas | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={0} />
             <div className="content">
