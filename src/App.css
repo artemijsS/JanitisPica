@@ -50,9 +50,9 @@ a {
 .header {
   border-bottom: 1px solid #f6f6f6;
   background-color: white;
-  /*z-index: 2;*/
+  z-index: 2;
   padding: 40px 0;
-  /*height: 200px;*/
+  height: 20vh;
   position: fixed;
   width: calc(100vw - 100px);
   max-width: 1400px;
@@ -868,4 +868,7 @@ a {
   margin: 0 auto;
   font-weight: 600;
   font-size: 18px
+}
+@media screen and (max-width: 800px)  {
+
 }
