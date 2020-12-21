@@ -52,8 +52,8 @@ a {
   background-color: white;
   /*z-index: 2;*/
   padding: 40px 0;
-  height: 200px;
-  /*position: fixed;*/
+  /*height: 200px;*/
+  position: fixed;
   width: calc(100vw - 100px);
   max-width: 1400px;
   margin: auto;
