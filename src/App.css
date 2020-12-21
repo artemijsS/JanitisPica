@@ -870,9 +870,12 @@ a {
   font-weight: 600;
   font-size: 18px
 }
-@media screen and (max-width: 800px)  {
+@media screen and (max-width: 1600px)  {
   .header__logo img {
     height: 70px;
     width: 70px;
+  }
+  .content {
+    padding: 70px 0 0 0;
   }
 }
