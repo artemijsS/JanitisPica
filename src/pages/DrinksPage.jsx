@@ -11,8 +11,8 @@ const categoryNames = ['Bezalkohola', 'Alkohola'];
 
 const sortItems = [
     { name: 'popularitātes', type: 'rating', order: 'desc' },
-    { name: 'cenas (no augšas)', type: 'price[0]', order: 'desc' },
-    { name: 'cenas (no lejas)', type: 'price[0]', order: 'asc' },
+    { name: 'cenas (no augšas)', type: 'price_main', order: 'desc' },
+    { name: 'cenas (no lejas)', type: 'price_main', order: 'asc' },
     { name: 'alfabēta', type: 'name', order: 'asc' },
 ];
 
@@ -35,8 +35,8 @@ function DrinksPage () {
     }, [category, sortBy, dispatch]);
 
 
-    const onSelectCategory = useCallback(index => {
-        dispatch(setCategory(index));
+    const onSelectCategory = useCallback(name => {
+        dispatch(setCategory(name));
     }, [dispatch]);
 
     const onSelectSortType = useCallback((type) => {

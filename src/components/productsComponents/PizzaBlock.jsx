@@ -63,8 +63,8 @@ const PizzaBlock = ({id, name, img, sizes, price, onClickAddPizza, addedCart}) =
 PizzaBlock.propTypes = {
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
-    price: PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+    price: PropTypes.object.isRequired,
+    sizes: PropTypes.object.isRequired
 }
 
 PizzaBlock.defaultProps = {

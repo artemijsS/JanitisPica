@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {Button} from "../index";
 
-const DrinkBlock = ({id, name, img, price, onClickAddDrink, addedCart}) => {
+const DrinkBlock = ({id, name, img, price_main,onClickAddDrink, addedCart}) => {
 
     const onAddDrink = () => {
-        let finalPrice = price[0];
+        let finalPrice = price_main;
         onClickAddDrink({id, name, finalPrice, img});
     }
 
@@ -16,7 +16,7 @@ const DrinkBlock = ({id, name, img, price, onClickAddDrink, addedCart}) => {
                  alt="Drink"/>
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">{price} €</div>
+                <div className="pizza-block__price">{price_main} €</div>
                 <Button
                     className="button button--outline button--add"
                     onClick={onAddDrink}
@@ -38,7 +38,7 @@ const DrinkBlock = ({id, name, img, price, onClickAddDrink, addedCart}) => {
 DrinkBlock.propTypes = {
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
-    price: PropTypes.arrayOf(PropTypes.number).isRequired
+    price: PropTypes.object.isRequired
 }
 
 DrinkBlock.defaultProps = {

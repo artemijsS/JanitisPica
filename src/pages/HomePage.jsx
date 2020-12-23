@@ -28,8 +28,8 @@ function HomePage () {
     }, [category, sortBy, dispatch]);
 
 
-    const onSelectCategory = useCallback(index => {
-        dispatch(setCategory(index));
+    const onSelectCategory = useCallback(name => {
+        dispatch(setCategory(name));
     }, [dispatch]);
 
     const onSelectSortType = useCallback((type) => {
