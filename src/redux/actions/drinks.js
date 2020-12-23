@@ -19,7 +19,6 @@ export const fetchDrinks = (category, sortBy) => (dispatch) => {
 
     axios.get(`http://localhost:1337/products?type_of_product.name=drinks&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
         .then(({ data }) => {
-            console.log(data)
             dispatch(setDrinks(data));
         });
 }
