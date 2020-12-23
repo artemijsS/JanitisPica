@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Categories, Footer, Header, LoadingPizzaBlock, PizzaBlock, SortPopUp} from "../components";
 import {Helmet} from "react-helmet";
 
@@ -22,6 +22,15 @@ function HomePage () {
     const cart = useSelector(({ cart }) => cart.items);
     const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
     const { category, sortBy } = useSelector(({ filters }) => filters);
+
+    const [activeCategory, setActiveCategory] = useState(null);
+
+    useEffect(() => {
+        if (!categoryNames.includes(category)) {
+            dispatch(setCategory(null));
+            setActiveCategory(null);
+        }
+    }, [category, dispatch])
 
     useEffect(() => {
         dispatch(fetchPizzas(category,sortBy))
@@ -51,7 +60,7 @@ function HomePage () {
                 <div className="container">
                     <div className="content__top">
                         <Categories
-                            activeCategory={category}
+                            activeCategory={activeCategory}
                             onClickItem={onSelectCategory}
                             items={categoryNames}
                         />

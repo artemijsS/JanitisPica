@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Categories, DrinkBlock, Footer, Header, LoadingDrinkBlock,SortPopUp} from "../components";
 import { Helmet } from 'react-helmet';
 
@@ -24,10 +24,14 @@ function DrinksPage () {
     const isLoaded = useSelector(({ drinks }) => drinks.isLoaded);
     const { category, sortBy } = useSelector(({ filters }) => filters);
 
+    const [activeCategory, setActiveCategory] = useState(null);
 
-    if (category > categoryNames.length - 1) {
-        dispatch(setCategory(null));
-    }
+    useEffect(() => {
+        if (!categoryNames.includes(category)) {
+            dispatch(setCategory(null));
+            setActiveCategory(null);
+        }
+    }, [category, dispatch])
 
 
     useEffect(() => {
@@ -57,7 +61,7 @@ function DrinksPage () {
                 <div className="container">
                     <div className="content__top">
                         <Categories
-                            activeCategory={category}
+                            activeCategory={activeCategory}
                             onClickItem={onSelectCategory}
                             items={categoryNames}
                         />
