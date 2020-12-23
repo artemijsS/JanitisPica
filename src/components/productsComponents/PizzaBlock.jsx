@@ -13,8 +13,8 @@ const PizzaBlock = ({id, name, img, sizes, price, onClickAddPizza, addedCart}) =
     }
 
     const onAddPizza = () => {
-        let finalPrice = price[actualPrice];
-        let finalSize = sizes[sizeChoice];
+        let finalPrice = price.price[actualPrice];
+        let finalSize = sizes.sizes[sizeChoice];
         onClickAddPizza({id, name, finalPrice, finalSize, img});
     }
 
@@ -40,7 +40,7 @@ const PizzaBlock = ({id, name, img, sizes, price, onClickAddPizza, addedCart}) =
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">{price[actualPrice]} €</div>
+                <div className="pizza-block__price">{price.price[actualPrice]} €</div>
                 <Button
                     className="button button--outline button--add"
                     onClick={onAddPizza}
