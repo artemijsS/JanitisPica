@@ -11,8 +11,8 @@ const categoryNames = ['Gaļas', 'Vegānu', 'Grils', 'Asas', 'Zivis'];
 
 const sortItems = [
     { name: 'popularitātes', type: 'rating', order: 'desc' },
-    { name: 'cenas (no augšas)', type: 'price[0]', order: 'desc' },
-    { name: 'cenas (no lejas)', type: 'price[0]', order: 'asc' },
+    { name: 'cenas (no augšas)', type: 'price_main', order: 'desc' },
+    { name: 'cenas (no lejas)', type: 'price_main', order: 'asc' },
     { name: 'alfabēta', type: 'name', order: 'asc' },
 ];
 
@@ -39,7 +39,7 @@ function HomePage () {
     const clickedOnAddPizza = (obj) => {
         dispatch(addItemToCart(obj));
     }
-    console.log(pizzas[0] ? pizzas[0].sizes.sizes : 'not')
+    // console.log(pizzas[0] ? pizzas[0].sizes.sizes : 'not')
 
     return (
         <div>
