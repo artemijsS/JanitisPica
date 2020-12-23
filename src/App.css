@@ -101,7 +101,16 @@
     margin-top: 15px;
   }
 }
-@media screen and (min-width: 850px) {
+@media screen and (max-width: 950px) {
+  .sort {
+    margin-top: 15px;
+  }
+
+  .sort__popup {
+    position: absolute;
+  }
+}
+@media screen and (min-width: 950px) {
   .content__top {
     display: flex;
   }
