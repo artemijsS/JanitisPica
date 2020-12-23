@@ -22,7 +22,7 @@ const Categories = React.memo(({ activeCategory, items, onClickItem }) => {
                     return (
                         <li
                             className={activeItem === i ? 'active' : ''}
-                            onClick={() => onSelectedItem(i)}
+                            onClick={() => onSelectedItem(name)}
                             key={`${name}_${i}`}
                         >
                             {name}

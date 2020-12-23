@@ -26,7 +26,7 @@ const PizzaBlock = ({id, name, img, sizes, price, onClickAddPizza, addedCart}) =
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    {sizes.map((size, i) => {
+                    {sizes.sizes.map((size, i) => {
                         return (
                             <li
                                 className={sizeChoice === i ? 'active' : ''}

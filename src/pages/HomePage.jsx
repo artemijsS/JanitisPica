@@ -39,7 +39,7 @@ function HomePage () {
     const clickedOnAddPizza = (obj) => {
         dispatch(addItemToCart(obj));
     }
-
+    console.log(pizzas[0] ? pizzas[0].sizes.sizes : 'not')
 
     return (
         <div>
