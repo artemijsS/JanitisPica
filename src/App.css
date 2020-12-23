@@ -20,7 +20,7 @@
 .bar {
   height: 5px;
   width: 100%;
-  background-color: #b81568;
+  background-color: red;
   display: block;
   border-radius: 5px;
 }
@@ -31,8 +31,8 @@
   transform: translateY(4px);
 }
 .nav_opened li a{
-  margin-right: 10px;
-  color: black;
+  margin-right: 20px;
+  color: white;
   text-decoration: none;
   font-size: 20px;
 }
@@ -58,6 +58,7 @@
 }
 #menu-bar {
   z-index: 2;
+  /*margin-right: 20px;*/
 }
 .menu_bg {
   z-index: 1;
@@ -65,21 +66,24 @@
   height: 0;
   margin: 65px -10px 20px 20px;
   border-radius: 50%;
-  background: radial-gradient(circle,#e94498,#b81568);
+  background: radial-gradient(circle,#b81123,#b81568);
   transition: 0.3s ease;
 }
 .change_bg {
   width: 550px;
-  height: 540px;
+  height: 550px;
   transform: translate(60%,-40%);
 }
 .change {
-  margin: 65px -40px 20px 20px;
+  margin: 65px -70px 20px 20px;
   display: block;
   background: transparent;
 }
+.change li {
+  margin-right: 20px;
+}
 .change .bar {
-  background-color: black;
+  background-color: white;
 }
 .change #bar1 {
   transform: translateY(4px) rotateZ(-45deg);
@@ -380,10 +384,15 @@ a {
   font-size: 16px
 }
 
+/*.categories {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*}*/
+
 .categories ul {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex
+  display: flex;
 }
 
 .categories ul li {
@@ -399,7 +408,7 @@ a {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none
+  user-select: none;
 }
 
 .categories ul li:hover {
@@ -450,7 +459,7 @@ a {
 
 .sort__popup {
   position: absolute;
-  right: 0;
+  /*right: 0;*/
   margin-top: 15px;
   background: #ffffff;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
@@ -614,13 +623,14 @@ a {
 .content__top {
   display: -webkit-box;
   display: -ms-flexbox;
-  /*display: flex;*/
+  display: flex;
+  flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .container {
@@ -996,6 +1006,15 @@ a {
     gap: 2rem;
     align-items: center;
     grid-column-gap: 2rem;
-
   }
 }
+/*@media screen and (max-width: 750px)  {*/
+/*  .categories {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));*/
+/*    !*max-width: 1200px;*!*/
+/*    gap: 2rem;*/
+/*    align-items: center;*/
+/*    grid-column-gap: 2rem;*/
+/*  }*/
+/*}*/
