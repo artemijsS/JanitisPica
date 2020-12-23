@@ -16,6 +16,12 @@ export const Header = ({ activeIndex }) => {
         setActiveItem(index);
     }
 
+    function onClickMenu() {
+        document.getElementById("menu").classList.toggle("change");
+        document.getElementById("nav_opened").classList.toggle("change");
+        document.getElementById("menu_bg").classList.toggle("change_bg");
+    }
+
     return (
         <div className="header">
             <div className="container">
@@ -60,6 +66,27 @@ export const Header = ({ activeIndex }) => {
                             <span>{totalCount}</span>
                         </Button>
                     </Link>
+                </div>
+                <div id="menu-bar">
+                    <div id="menu" onClick={onClickMenu}>
+                        <div id="bar1" className="bar"></div>
+                        <div id="bar2" className="bar"></div>
+                        <div id="bar3" className="bar"></div>
+                    </div>
+                    <ul className="nav_opened" id="nav_opened">
+                        <li onClick={() => onSelectedItem(0)}>
+                            <Link className={activeItem === 0 ? 'active' : ''} to="/home">Picas</Link>
+                        </li>
+                        <li onClick={() => onSelectedItem(1)}>
+                            <Link className={activeItem === 1 ? 'active' : ''} to="/dzerieni">Dzērieni</Link>
+                        </li>
+                        <li onClick={() => onSelectedItem(2)}>
+                            <Link className={activeItem === 2 ? 'active' : ''} to="/akcijas">Akcijas</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="menu_bg" id="menu_bg">
+
                 </div>
             </div>
         </div>
