@@ -37,7 +37,8 @@
   font-size: 20px;
 }
 .nav_opened li a:hover{
-  font-weight: bold;
+  /*font-weight: bold;*/
+  color: red;
 }
 .nav_opened li {
   list-style: none;
@@ -105,11 +106,10 @@
     margin-top: 15px;
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1071px) {
   .sort {
     margin-top: 15px;
   }
-
   .sort__popup {
     position: absolute;
   }
