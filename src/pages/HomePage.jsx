@@ -29,7 +29,7 @@ function HomePage () {
             dispatch(setCategory(null));
             setActiveCategory(null);
         }
-    }, [category, dispatch])
+    }, [category, dispatch, pizzasCategories])
 
     useEffect(() => {
         dispatch(fetchPizzas(category,sortBy))

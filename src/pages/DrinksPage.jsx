@@ -30,7 +30,7 @@ function DrinksPage () {
             dispatch(setCategory(null));
             setActiveCategory(null);
         }
-    }, [category, dispatch])
+    }, [category, dispatch, drinksCategories])
 
 
     useEffect(() => {
