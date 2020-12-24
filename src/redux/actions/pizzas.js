@@ -19,7 +19,7 @@ export const fetchPizzas = (category, sortBy) => (dispatch) => {
     //     });
     // console.log(category)
     // console.log(sortBy)
-    axios.get(`http://localhost:1337/products?type_of_product.name=pizzas&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
+    axios.get(`http://81.198.235.200:1337/products?type_of_product.name=pizzas&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
         .then(({ data }) => {
             dispatch(setPizzas(data));
         });
