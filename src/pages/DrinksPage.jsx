@@ -7,7 +7,6 @@ import {fetchDrinks} from "../redux/actions/drinks";
 import {addItemToCart} from "../redux/actions/cart";
 import {setCategory, setSortBy} from "../redux/actions/filters";
 
-const categoryNames = ['Bezalkohola', 'Alkohola'];
 
 const sortItems = [
     { name: 'popularitātes', type: 'rating', order: 'desc' },
@@ -22,12 +21,12 @@ function DrinksPage () {
     const drinks = useSelector(({ drinks }) => drinks.items);
     const cart = useSelector(({ cart }) => cart.items);
     const isLoaded = useSelector(({ drinks }) => drinks.isLoaded);
-    const { category, sortBy } = useSelector(({ filters }) => filters);
+    const { category, sortBy, drinksCategories } = useSelector(({ filters }) => filters);
 
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        if (!categoryNames.includes(category)) {
+        if (!drinksCategories.includes(category)) {
             dispatch(setCategory(null));
             setActiveCategory(null);
         }
@@ -63,7 +62,7 @@ function DrinksPage () {
                         <Categories
                             activeCategory={activeCategory}
                             onClickItem={onSelectCategory}
-                            items={categoryNames}
+                            items={drinksCategories}
                         />
                         <SortPopUp
                             activeSort={sortBy}

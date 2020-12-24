@@ -7,7 +7,6 @@ import {setCategory, setSortBy} from '../redux/actions/filters';
 import {fetchPizzas} from "../redux/actions/pizzas";
 import {addItemToCart} from "../redux/actions/cart";
 
-const categoryNames = ['Gaļas', 'Vegānu', 'Grils', 'Asas', 'Zivis'];
 
 const sortItems = [
     { name: 'popularitātes', type: 'rating', order: 'desc' },
@@ -21,12 +20,12 @@ function HomePage () {
     const pizzas = useSelector(({ pizzas }) => pizzas.items);
     const cart = useSelector(({ cart }) => cart.items);
     const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
-    const { category, sortBy } = useSelector(({ filters }) => filters);
+    const { category, sortBy, pizzasCategories } = useSelector(({ filters }) => filters);
 
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        if (!categoryNames.includes(category)) {
+        if (!pizzasCategories.includes(category)) {
             dispatch(setCategory(null));
             setActiveCategory(null);
         }
@@ -62,7 +61,7 @@ function HomePage () {
                         <Categories
                             activeCategory={activeCategory}
                             onClickItem={onSelectCategory}
-                            items={categoryNames}
+                            items={pizzasCategories}
                         />
                         <SortPopUp
                             activeSort={sortBy}
