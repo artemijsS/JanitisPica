@@ -84,7 +84,7 @@ function DrinksPage () {
                             :Array(4)
                                 .fill(0)
                                 .map((_, index) => <LoadingDrinkBlock key={index} />)}
-                        {!drinks[0] &&
+                        {!drinks[0] && isLoaded &&
                             <div className="no_product">Atvainojiet, bet tādas preces uz doto brīdi nav</div>
                         }
                     </div>
