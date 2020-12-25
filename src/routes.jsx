@@ -19,7 +19,7 @@ export const useRoutes = () => {
             </Route>
             <Route path="/admin" exact>
                 {
-                    <a id="test" href="http://localhost:1337/admin" style={{margin:"auto"}}>test</a>
+                    <a id="test" href="http://95.68.95.244:1337/admin" style={{margin:"auto"}}>test</a>
                 }
             </Route>
 
