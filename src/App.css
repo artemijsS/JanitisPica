@@ -14,7 +14,7 @@
   background-color: transparent;
   width: 35px;
   height: 30px;
-  margin: 65px -20px 20px 20px;
+  margin: 67px -20px 20px 20px;
   cursor: pointer;
 }
 .bar {
@@ -53,10 +53,10 @@
 }
 .menu_bg, #menu-bar {
   top: 0;
-  right: 0px;
+  right: 5px;
   position: absolute;
-
 }
+
 #menu-bar {
   z-index: 2;
   /*margin-right: 20px;*/
@@ -76,7 +76,7 @@
   transform: translate(60%,-40%);
 }
 .change {
-  margin: 65px -70px 20px 20px;
+  margin: 67px -70px 20px 20px;
   display: block;
   background: transparent;
 }
@@ -163,7 +163,8 @@ a {
   padding: 40px 0;
   min-height: 176px;
   position: fixed;
-  width: calc(100vw - 100px);
+  /*width: 90%;*/
+  width: calc(100vw - 80px);
   max-width: 1400px;
   margin: auto;
 }
@@ -205,7 +206,14 @@ a {
 .header__logo p {
   color: #7b7b7b
 }
-
+@media screen and (max-width: 500px)  {
+  .header__cart {
+    display: none;
+  }
+}
+/*.header__cart__mobile {*/
+/*  display: none;*/
+/*}*/
 .nav ul {
   display: flex;
   justify-content: space-between;
@@ -393,6 +401,13 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.categories li {
+  margin-top: 15px;
+  width: 150px;
+  text-align: center;
 }
 
 .categories ul li {
@@ -498,11 +513,18 @@ a {
 .pizza-block {
   width: 280px;
   text-align: center;
+  align-content: space-between;
   margin-bottom: 65px
+}
+@media screen and (max-width: 737px) {
+  .pizza-block {
+    width: auto;
+  }
 }
 
 .pizza-block:not(:nth-of-type(4n)) {
-  margin-right: 3.7%
+  margin-right: 3.7%;
+  /*margin-left: 3.7%;*/
 }
 
 .pizza-block__image {
@@ -593,7 +615,7 @@ a {
 
 
 .wrapper {
-  width: calc(100vw - 100px);
+  width: calc(100vw - 80px);
   height: 100%;
   background-color: #fff;
   margin: auto;
