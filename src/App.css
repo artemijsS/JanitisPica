@@ -1023,7 +1023,7 @@ a {
     justify-content: space-around;
   }
   .content__items {
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     max-width: 1200px;
     gap: 2rem;
