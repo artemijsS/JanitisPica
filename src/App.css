@@ -1008,7 +1008,7 @@ a {
   font-weight: 600;
   font-size: 18px
 }
-@media screen and (max-width: 1600px)  {
+@media screen and (max-width: 1400px)  {
   .header__logo img {
     height: 70px;
     width: 70px;
