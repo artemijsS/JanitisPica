@@ -3,12 +3,12 @@ import { Footer, Header } from "../components";
 import { Helmet } from 'react-helmet';
 
 
-function SalesPage () {
+function Contacts () {
 
     return (
         <div>
             <Helmet>
-                <title>Akcijas | Jānātīs pica</title>
+                <title>Kontakti | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={2} />
             <div className="content">
@@ -23,4 +23,4 @@ function SalesPage () {
     )
 }
 
-export default SalesPage;
+export default Contacts;

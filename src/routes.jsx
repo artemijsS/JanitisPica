@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import {HomePage, CartPage, DrinksPage, SalesPage} from './pages/index';
-
+import {HomePage, CartPage, DrinksPage, Contacts} from './pages/index';
+//TODO сделать страницу
 export const useRoutes = () => {
     return (
         <Switch>
@@ -14,8 +14,8 @@ export const useRoutes = () => {
             <Route path="/dzerieni" exact>
                 <DrinksPage/>
             </Route>
-            <Route path="/akcijas" exact>
-                <SalesPage/>
+            <Route path="/kontakti" exact>
+                <Contacts/>
             </Route>
             <Route path="/admin" exact>
                 {

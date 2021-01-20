@@ -43,7 +43,7 @@ export const Header = ({ activeIndex }) => {
                             <Link className={activeItem === 1 ? 'active' : ''} to="/dzerieni">Dzērieni</Link>
                         </li>
                         <li onClick={() => onSelectedItem(2)}>
-                            <Link className={activeItem === 2 ? 'active' : ''} to="/akcijas">Akcijas</Link>
+                            <Link className={activeItem === 2 ? 'active' : ''} to="/kontakti">Kontakti</Link>
                         </li>
                     </ul>
                 </div>
@@ -81,7 +81,7 @@ export const Header = ({ activeIndex }) => {
                             <Link className={activeItem === 1 ? 'active' : ''} to="/dzerieni">Dzērieni</Link>
                         </li>
                         <li onClick={() => onSelectedItem(2)}>
-                            <Link className={activeItem === 2 ? 'active' : ''} to="/akcijas">Akcijas</Link>
+                            <Link className={activeItem === 2 ? 'active' : ''} to="/kontakti">Kontakti</Link>
                         </li>
                     </ul>
                 </div>
