@@ -42,7 +42,7 @@
 }
 .nav_opened li {
   list-style: none;
-  padding: 16px 0;
+  padding: 4px 0;
 }
 .nav_opened {
   text-align: right;
@@ -67,7 +67,9 @@
   height: 0;
   margin: 65px -10px 20px 20px;
   border-radius: 50%;
-  background: radial-gradient(circle,#b81123,#b81568);
+  /*background: radial-gradient(circle,#b81123,#b81568);*/
+  /*background: radial-gradient(circle, #A1D8DB, #76AAE7);*/
+  background: radial-gradient(circle, #B12222, #FF0000);
   transition: 0.3s ease;
 }
 .change_bg {
@@ -76,7 +78,7 @@
   transform: translate(60%,-40%);
 }
 .change {
-  margin: 67px -70px 20px 20px;
+  margin: 30px -70px 20px 20px;
   display: block;
   background: transparent;
 }
@@ -161,10 +163,11 @@ a {
   background-color: white;
   z-index: 2;
   padding: 40px 0;
-  min-height: 176px;
+  height: 176px;
   position: fixed;
   /*width: 90%;*/
   width: calc(100vw - 80px);
+  /*width: 100%;*/
   max-width: 1400px;
   margin: auto;
 }
@@ -207,9 +210,18 @@ a {
   color: #7b7b7b
 }
 @media screen and (max-width: 500px)  {
+  .header {
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
   .header__cart {
     display: none;
   }
+  #menu-bar {
+    right: 50px;
+  }
+
 }
 /*.header__cart__mobile {*/
 /*  display: none;*/
@@ -382,6 +394,10 @@ a {
   padding: 12px 25px
 }
 
+.button--cart.mob {
+  display: none;
+}
+
 .button--cart svg {
   margin-right: 8px;
   margin-bottom: 1px
@@ -390,6 +406,18 @@ a {
 .button--cart span {
   font-weight: 600;
   font-size: 16px
+}
+
+@media screen and (max-width: 500px) {
+  .button--cart {
+    padding: 5px 13px;
+  }
+  .button.button--cart {
+    background-color: black;
+  }
+  .button--cart.mob {
+    display: flex;
+  }
 }
 
 /*.categories {*/
@@ -442,7 +470,7 @@ a {
 
 .sort {
   position: relative;
-  /*margin-top: 15px;*/
+  margin-top: 15px;
 }
 
 .sort__label {
@@ -1008,6 +1036,7 @@ a {
   font-weight: 600;
   font-size: 18px
 }
+
 @media screen and (max-width: 1400px)  {
   .header__logo img {
     height: 70px;
@@ -1041,3 +1070,33 @@ a {
 /*    grid-column-gap: 2rem;*/
 /*  }*/
 /*}*/
+
+          /*CheckOut*/
+#form-checkOut {
+  text-align: center;
+}
+.form {
+  width: 45%;
+  margin: 0 auto;
+}
+#form-checkOut input {
+  margin-bottom: 30px;
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid gray;
+  padding: 20px;
+  font-size: 18px;
+}
+#form-checkOut input::placeholder {
+  font-size: 18px;
+  margin-left: 5px;
+}
+#form-checkOut .vards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#form-checkOut .talrunis input {
+  width: 100%;
+}

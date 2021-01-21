@@ -1,5 +1,5 @@
 import React from 'react';
-import {CartItem, Footer, Header, Button} from "../components";
+import {CartItem, Footer, Header} from "../components";
 import {Helmet} from "react-helmet";
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,8 +10,6 @@ function CartPage () {
     const dispatch = useDispatch();
 
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart)
-    // console.log(Object.keys(items))
-    // console.log(items)
 
     let cartItems = [];
 
@@ -44,26 +42,6 @@ function CartPage () {
         dispatch(plusItem(obj));
     }
 
-    const checkout = () => {
-        // console.log("Pasūtījums, summa - ", totalPrice, items)
-        let finalCart = {
-            items: [],
-            totalPrice: totalPrice,
-            totalCount: totalCount
-        }
-
-        // eslint-disable-next-line array-callback-return
-        Object.keys(items).map((id) => {
-            let itemsID = Object.keys(items[id]);
-            itemsID.pop();
-            // eslint-disable-next-line array-callback-return
-            itemsID.map((param) => {
-                console.log(items[id][param])
-                finalCart.items.push(items[id][param]);
-            })
-        })
-        console.log(finalCart)
-    }
 
     // console.log(cartItems)
 
@@ -152,9 +130,9 @@ function CartPage () {
                                     </svg>
                                     <span>Atpakaļ</span>
                                 </Link>
-                                <Button onClick={checkout} className="button pay-btn">
+                                <Link to="/checkout" className="button pay-btn">
                                     <span>Noformēt pasūtījumu</span>
-                                </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
