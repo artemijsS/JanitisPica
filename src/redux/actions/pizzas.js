@@ -1,4 +1,5 @@
 import axios from "axios";
+import server from "../serverSettings.json";
 
 export const setLoaded = (payload) => ({
     type: 'SET_LOADED',
@@ -19,7 +20,7 @@ export const fetchPizzas = (category, sortBy) => (dispatch) => {
     //     });
     // console.log(category)
     // console.log(sortBy)
-    axios.get(`https://young-ridge-27848.herokuapp.com/products?type_of_product.name=pizzas&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
+    axios.get(`${server.serverProd}/products?type_of_product.name=pizzas&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
         .then(({ data }) => {
             dispatch(setPizzas(data));
         });

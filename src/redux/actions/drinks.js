@@ -1,4 +1,5 @@
 import axios from "axios";
+import server from "../serverSettings.json";
 
 export const setLoaded = (payload) => ({
     type: 'SET_DRINKS_LOADED',
@@ -17,7 +18,7 @@ export const fetchDrinks = (category, sortBy) => (dispatch) => {
     //         dispatch(setDrinks(data));
     //     });
 
-    axios.get(`https://young-ridge-27848.herokuapp.com/products?type_of_product.name=drinks&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
+    axios.get(`${server.serverProd}/products?type_of_product.name=drinks&${category !== null ? `categories.name=${category}` : ''}&_sort=${sortBy.type}:${sortBy.order}`)
         .then(({ data }) => {
             dispatch(setDrinks(data));
         });

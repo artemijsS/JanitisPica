@@ -1,0 +1,4 @@
+{
+  "serverDev": "https://young-ridge-27848.herokuapp.com",
+  "serverProd": "http://localhost:1337"
+}
