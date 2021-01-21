@@ -1,11 +1,11 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {HomePage, CartPage, DrinksPage, Contacts, CheckOut} from './pages/index';
-//TODO сделать страницу
+
 export const useRoutes = () => {
     return (
         <Switch>
-            <Route path="/home" exact>
+            <Route path="/pizzas" exact>
                 <HomePage/>
             </Route>
             <Route path="/cart" exact>
@@ -26,7 +26,7 @@ export const useRoutes = () => {
                 }
             </Route>
 
-            <Redirect to="/home"/>
+            <Redirect to="/pizzas"/>
         </Switch>
         )
 }
