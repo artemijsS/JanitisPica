@@ -14,7 +14,7 @@ const sortItems = [
     { name: 'cenas (no lejas)', type: 'price_main', order: 'asc' },
     { name: 'alfabēta', type: 'name', order: 'asc' },
 ];
-
+//TODO сделать скрол наверх на всех страницах, на мобильной версии сдлеать кнопку НАВВЕРХ
 function HomePage () {
     const dispatch = useDispatch();
     const pizzas = useSelector(({ pizzas }) => pizzas.items);
