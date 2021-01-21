@@ -38,7 +38,7 @@
 }
 .nav_opened li a:hover{
   /*font-weight: bold;*/
-  color: red;
+  color: black;
 }
 .nav_opened li {
   list-style: none;
@@ -51,6 +51,11 @@
   transition: 0.3s ease;
   display: none;
 }
+.nav_opened li .active {
+  color: black;
+  font-weight: bold;
+}
+
 .menu_bg, #menu-bar {
   top: 0;
   right: 5px;
