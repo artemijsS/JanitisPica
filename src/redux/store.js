@@ -6,14 +6,14 @@ import axios from "axios";
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let pizzasCat = [];
-axios.get(`http://localhost:1337/categories?type_of_products.name=pizzas`)
+axios.get(`https://young-ridge-27848.herokuapp.com/categories?type_of_products.name=pizzas`)
     .then(({ data }) => {
         data.map(obj => pizzasCat.push(obj.name))
         // console.log(tmp)
     });
 //young-ridge-27848.herokuapp.com
 let drinksCat = [];
-axios.get(`http://localhost:1337/categories?type_of_products.name=drinks`)
+axios.get(`https://young-ridge-27848.herokuapp.com/categories?type_of_products.name=drinks`)
     .then(({ data }) => {
         data.map(obj => drinksCat.push(obj.name))
         // console.log(tmp)
