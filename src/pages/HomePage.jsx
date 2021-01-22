@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {Categories, Footer, Header, LoadingPizzaBlock, PizzaBlock, SortPopUp} from "../components";
+import {Categories, Footer, Header, LoadingPizzaBlock, PizzaBlock, SortPopUp, UpButton} from "../components";
 import {Helmet} from "react-helmet";
 
 import {useDispatch, useSelector} from "react-redux";
@@ -14,7 +14,7 @@ const sortItems = [
     { name: 'cenas (no lejas)', type: 'price_main', order: 'asc' },
     { name: 'alfabēta', type: 'name', order: 'asc' },
 ];
-//TODO сделать скрол наверх на всех страницах, на мобильной версии сдлеать кнопку НАВВЕРХ
+
 function HomePage () {
     const dispatch = useDispatch();
     const pizzas = useSelector(({ pizzas }) => pizzas.items);
@@ -25,11 +25,13 @@ function HomePage () {
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        if (!pizzasCategories.includes(category)) {
-            dispatch(setCategory(null));
-            setActiveCategory(null);
-        }
-    }, [category, dispatch, pizzasCategories])
+        window.scrollTo(0,0);
+    }, [])
+
+    useEffect(() => {
+        dispatch(setCategory(null));
+        setActiveCategory(null);
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(fetchPizzas(category,sortBy))
@@ -54,6 +56,7 @@ function HomePage () {
             <Helmet>
                 <title>Picas | Jānātīs pica</title>
             </Helmet>
+            <UpButton/>
             <Header activeIndex={0} />
             <div className="content">
                 <div className="container">

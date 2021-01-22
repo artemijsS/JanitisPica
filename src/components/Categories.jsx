@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-//TODO активный элемент не првильно горит, если перейти в контакты и вернуться обратно
+
 
 const Categories = ({ activeCategory, items, onClickItem }) => {
 

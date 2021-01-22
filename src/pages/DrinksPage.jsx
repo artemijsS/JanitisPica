@@ -26,11 +26,13 @@ function DrinksPage () {
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        if (!drinksCategories.includes(category)) {
-            dispatch(setCategory(null));
-            setActiveCategory(null);
-        }
-    }, [category, dispatch, drinksCategories])
+        window.scrollTo(0,0);
+    }, [])
+
+    useEffect(() => {
+        dispatch(setCategory(null));
+        setActiveCategory(null);
+    }, [dispatch])
 
 
     useEffect(() => {

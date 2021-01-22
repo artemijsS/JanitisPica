@@ -8,3 +8,4 @@ export { default as DrinkBlock } from './productsComponents/DrinkBlock';
 export { default as LoadingPizzaBlock } from './productsComponents/LoadingPizzaBlock';
 export { default as LoadingDrinkBlock } from './productsComponents/LoadingDrinks';
 export { default as CartItem } from './CartItem';
+export { default as UpButton } from './UpButton';
