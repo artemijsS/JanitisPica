@@ -16,7 +16,7 @@ const sortItems = [
 ];
 
 function DrinksPage () {
-
+    //TODO добавить скрол кнопку
     const dispatch = useDispatch();
     const drinks = useSelector(({ drinks }) => drinks.items);
     const cart = useSelector(({ cart }) => cart.items);
