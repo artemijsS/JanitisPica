@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {Categories, DrinkBlock, Footer, Header, LoadingDrinkBlock,SortPopUp} from "../components";
+import {Categories, DrinkBlock, Footer, Header, LoadingDrinkBlock, SortPopUp, UpButton} from "../components";
 import { Helmet } from 'react-helmet';
 
 import {useDispatch, useSelector} from "react-redux";
@@ -57,6 +57,7 @@ function DrinksPage () {
             <Helmet>
                 <title>Dzērieni | Jānātīs pica</title>
             </Helmet>
+            <UpButton/>
             <Header activeIndex={1} />
             <div className="content">
                 <div className="container">
