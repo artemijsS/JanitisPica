@@ -1,5 +1,5 @@
-import React from 'react';
-import {CartItem, Footer, Header} from "../components";
+import React, {useEffect} from 'react';
+import {CartItem, Footer, Header, UpButton} from "../components";
 import {Helmet} from "react-helmet";
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -21,6 +21,10 @@ function CartPage () {
             cartItems.push(items[id][obj])
         })
     });
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
     // console.log(cartItems)
 
@@ -50,6 +54,7 @@ function CartPage () {
             <Helmet>
                 <title>Grozs | Jānātīs pica</title>
             </Helmet>
+            <UpButton/>
             <Header activeIndex={null}/>
             <div className="content">
                 { cartItems.length > 0 ?
