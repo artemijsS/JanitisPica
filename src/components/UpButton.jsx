@@ -15,7 +15,6 @@ export const UpButton = () => {
     useEffect(() => {
         const scrollF = () => {
             if (window.scrollY > 300) {
-                console.log('teeest');
                 setStyle({display: "block"})
             }
             else {
