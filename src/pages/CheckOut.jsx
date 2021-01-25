@@ -46,25 +46,6 @@ function CheckOut () {
         event.preventDefault();
         setCheckOut(true);
         console.log(name, surname, telephone)
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "name": "from react",
-                "content": "New Task Content",
-                "assignees": [
-                    6764153
-                ],
-                "due_date": "1611577799000",
-                "priority": 1,
-                "description": "iahfkjbasldla asdlkasdlkasm das"
-            })
-        };
-        fetch('https://api.clickup.com/api/v1/list/44542033/task', requestOptions)
-            .then(response => response.json());
 
         const json = JSON.stringify({
             "name": "from react",

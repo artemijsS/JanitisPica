@@ -1,4 +1,4 @@
 {
-  "serverDev": "http://localhost:1337",
-  "serverProd": "https://young-ridge-27848.herokuapp.com"
+  "serverDev": "https://young-ridge-27848.herokuapp.com",
+  "serverProd": "http://localhost:1337"
 }
