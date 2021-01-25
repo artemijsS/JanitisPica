@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Footer, Header} from "../components";
 import {Helmet} from "react-helmet";
-// import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {clearCart} from "../redux/actions/cart";
+import axios from "axios";
 
 
 function CheckOut () {
+
+    const dispatch = useDispatch();
 
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart)
 
@@ -39,12 +42,55 @@ function CheckOut () {
         toCheckOut();
     })
 
-    const submitForm = event => {
+    const submitForm = async event => {
         event.preventDefault();
         setCheckOut(true);
         console.log(name, surname, telephone)
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "name": "from react",
+                "content": "New Task Content",
+                "assignees": [
+                    6764153
+                ],
+                "due_date": "1611577799000",
+                "priority": 1,
+                "description": "iahfkjbasldla asdlkasdlkasm das"
+            })
+        };
+        fetch('https://api.clickup.com/api/v1/list/44542033/task', requestOptions)
+            .then(response => response.json());
 
+        const json = JSON.stringify({
+            "name": "from react",
+            "content": "New Task Content",
+            "assignees": [
+                6764153
+            ],
+            "due_date": "1611577799000",
+            "priority": 1,
+            "description": "iahfkjbasldla asdlkasdlkasm das"
+        });
+        const res = await axios.post('https://api.clickup.com/api/v1/list/44542033/task', json, {
+            headers: {
+                'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
+                'Content-Type': 'application/json'
+            }
+        })
     }
+
+    const onClearCart = () => {
+        dispatch(clearCart());
+    }
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
     return (
         <div>
@@ -52,20 +98,33 @@ function CheckOut () {
                 <title>Grozs | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={null}/>
-            {checkOut && <div className="bg-overlay">
-                <div className="content">
-                    <div className="container container--cart">
-                        <div className="pop-up-order">
-                            <div className="order-card">
-                                <div className="thank-you">Paldies!</div>
-                                <div className="order-info">Pasutījums ir saņemts, <span>mēs sazināsimies ar Jums tuvakajā laikā</span>,
-                                    lai apstiprināt pasutījumu
+            {checkOut &&
+                <div className="bg-overlay">
+                    <div className="content">
+                        <div className="container container--cart">
+                            <div className="pop-up-order">
+                                <div className="order-card">
+                                    <div className="thank-you">Paldies!</div>
+                                    <div className="order-info">
+                                        Pasutījums ir saņemts, <span>mēs sazināsimies ar Jums tuvakajā laikā</span>,
+                                        lai apstiprināt pasutījumu
+                                    </div>
+                                    <div className="cart__bottom-buttons">
+                                        <Link to="/" onClick={onClearCart} className="button button--outline button--add go-back-btn">
+                                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
+                                                      strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                            <span>Uz sākumu</span>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>}
+            }
             <div className="content">
                 <div className="container container--cart">
                     <div className="cart">
@@ -93,7 +152,7 @@ function CheckOut () {
                             <div className="form">
                                 <input placeholder="Vārds" type="text" id="name" onChange={e => {setName(e.target.value)}} required/>
                                 <input placeholder="Uzvārds" type="text" id="surname" onChange={e => {setSurname(e.target.value)}} required/>
-                                <input placeholder="Tālrunis" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
+                                <input placeholder="Tālrunis" pattern="[0-9]*" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
                             </div>
                         </form>
                         <div className="cart__bottom">

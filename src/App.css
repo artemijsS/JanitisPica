@@ -1286,11 +1286,18 @@ a {
   border-bottom: 1px solid red;
 }
 
-@media screen and (max-width: 340px) {
+.order-card .cart__bottom-buttons {
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
   .thank-you {
     font-size: 2rem;
   }
   .order-info {
     font-size: 1.1rem;
+  }
+  .order-card .cart__bottom-buttons {
+    margin-top: 20px;
   }
 }

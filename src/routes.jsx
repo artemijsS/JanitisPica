@@ -1,8 +1,12 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {HomePage, CartPage, DrinksPage, Contacts, CheckOut} from './pages/index';
+import {useSelector} from "react-redux";
 
 export const useRoutes = () => {
+
+    const { totalCount } = useSelector(({ cart }) => cart)
+
     return (
         <Switch>
             <Route path="/pizzas" exact>
@@ -17,14 +21,17 @@ export const useRoutes = () => {
             <Route path="/kontakti" exact>
                 <Contacts/>
             </Route>
-            <Route path="/checkout" exact>
-                <CheckOut/>
-            </Route>
             <Route path="/admin" exact>
                 {
                     <a id="test" href="https://young-ridge-27848.herokuapp.com/admin" style={{margin:"auto"}}>test</a>
                 }
             </Route>
+            {
+                totalCount &&
+                    <Route path="/checkout" exact>
+                        <CheckOut/>
+                    </Route>
+            }
 
             <Redirect to="/pizzas"/>
         </Switch>
