@@ -4,7 +4,7 @@ import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {clearCart} from "../redux/actions/cart";
-
+import server from "../redux/serverSettings.json"
 
 function CheckOut () {
 
@@ -72,32 +72,56 @@ function CheckOut () {
         console.log(name, surname, telephone)
 
 
-        async function postData(url = '', data = {}) {
-            // Default options are marked with *
-            const response = await fetch(url, {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                // mode: 'no-cors', // no-cors, *cors, same-origin
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
-                },
-                body: JSON.stringify(data)
-            });
-            return response.json();
-        }
+        // async function postData(url = '', data = {}) {
+        //     // Default options are marked with *
+        //     const response = await fetch(url, {
+        //         method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        //         // mode: 'no-cors', // no-cors, *cors, same-origin
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
+        //         },
+        //         body: JSON.stringify(data)
+        //     });
+        //     return response.json();
+        // }
+        // ///api/v2/list/44542033/task
+        // postData('/api/v2/list/44542033/task', {
+        //     name: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
+        //     content: "New Task Content",
+        //     assignees: [
+        //         6764141
+        //     ],
+        //     due_date: Math.floor(new Date().getTime()/1000.0) + '000',
+        //     priority: 3,
+        //     description: clickUpDescription })
+        //     .then(data => {
+        //         console.log(data); // JSON data parsed by `data.json()` call
+        //     });
 
-        postData('https://api.clickup.com/api/v2/list/44542033/task', {
-            name: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
+
+        const body = {
+            title: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
             content: "New Task Content",
             assignees: [
                 6764141
             ],
             due_date: Math.floor(new Date().getTime()/1000.0) + '000',
             priority: 3,
-            description: clickUpDescription })
-            .then(data => {
-                console.log(data); // JSON data parsed by `data.json()` call
-            });
+            description: clickUpDescription
+        }
+
+        async function test() {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            };
+            const response = await fetch(`${server.serverProd}/orders`, requestOptions);
+            const data = await response.json();
+            console.log(data)
+        }
+        test();
     }
 
     const onClearCart = () => {
