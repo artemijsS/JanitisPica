@@ -4,7 +4,6 @@ import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {clearCart} from "../redux/actions/cart";
-import axios from "axios";
 
 
 function CheckOut () {
@@ -42,27 +41,55 @@ function CheckOut () {
         toCheckOut();
     })
 
-    const submitForm = async event => {
+    const submitForm = event => {
         event.preventDefault();
         setCheckOut(true);
         console.log(name, surname, telephone)
 
-        const json = JSON.stringify({
-            "name": "from react",
-            "content": "New Task Content",
-            "assignees": [
+        // const json = JSON.stringify({
+        //     "name": "from react",
+        //     "content": "New Task Content",
+        //     "assignees": [
+        //         6764153
+        //     ],
+        //     "due_date": "1611577799000",
+        //     "priority": 1,
+        //     "description": "iahfkjbasldla asdlkasdlkasm das"
+        // });
+        // const res = await axios.post('https://api.clickup.com/api/v1/list/44542033/task', json, {
+        //     headers: {
+        //         'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+
+        async function postData(url = '', data = {}) {
+            // Default options are marked with *
+            const response = await fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'no-cors', // no-cors, *cors, same-origin
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(data)
+            });
+            return response.json();
+        }
+
+        postData('https://api.clickup.com/api/v2/list/44542033/task', {
+            name: "from react",
+            content: "New Task Content",
+            assignees: [
                 6764153
             ],
-            "due_date": "1611577799000",
-            "priority": 1,
-            "description": "iahfkjbasldla asdlkasdlkasm das"
-        });
-        const res = await axios.post('https://api.clickup.com/api/v1/list/44542033/task', json, {
-            headers: {
-                'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
-                'Content-Type': 'application/json'
-            }
-        })
+            due_date: "1611577799000",
+            priority: 1,
+            description: "iahfkjbasldla asdlkasdlkasm das" })
+            .then(data => {
+                console.log(data); // JSON data parsed by `data.json()` call
+            });
     }
 
     const onClearCart = () => {
