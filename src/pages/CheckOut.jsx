@@ -39,7 +39,7 @@ function CheckOut () {
 
         })
         // console.log(finalCart)
-        //TODO Исправить время в дискрипшоне. 20:01 это 20:1...
+        //TODO Исправить время в дискрипшоне. 20:01 это 20:1... Не работает отправка на кликап на хостинге
         clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {
@@ -86,7 +86,7 @@ function CheckOut () {
             return response.json();
         }
 
-        postData('/api/v2/list/44542033/task', {
+        postData('https://api.clickup.com/api/v2/list/44542033/task', {
             name: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
             content: "New Task Content",
             assignees: [
