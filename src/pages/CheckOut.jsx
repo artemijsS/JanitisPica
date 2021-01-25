@@ -17,12 +17,15 @@ function CheckOut () {
     const [telephone, setTelephone] = useState('');
     const [checkOut, setCheckOut] = useState(false);
 
+    let finalCart = {
+        items: [],
+        totalPrice: totalPrice,
+        totalCount: totalCount
+    }
+    let clickUpDescription = '';
+
     const toCheckOut = () => {
-        let finalCart = {
-            items: [],
-            totalPrice: totalPrice,
-            totalCount: totalCount
-        }
+
 
         // eslint-disable-next-line array-callback-return
         Object.keys(items).map((id) => {
@@ -33,12 +36,34 @@ function CheckOut () {
                 // console.log(items[id][param])
                 finalCart.items.push(items[id][param]);
             })
+
         })
         // console.log(finalCart)
+
+        clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
+
+        for (let i = 0; i < finalCart.items.length; i++) {
+            clickUpDescription += (i+1) + ') ';
+            let tmp = Object.keys(finalCart.items[i]);
+            let product = finalCart.items[i][tmp[0]]
+            // console.log("   ! "+ product.name + "  ")
+            clickUpDescription += "id-" + product.id + "  ";
+            clickUpDescription += product.name + "  ";
+            if (product.finalSize)
+                clickUpDescription += product.finalSize + "cm";
+            clickUpDescription += " | daudzums - " + finalCart.items[i].totalCount + " , cena - " + finalCart.items[i].totalPrice;
+            clickUpDescription += '\n';
+        }
+        clickUpDescription += '==============================================================================\n'
+        clickUpDescription += '                Daudzums - ' + finalCart.totalCount + '         Kopsumma - ' + finalCart.totalPrice + ' EUR'
     }
+
+
 
     useEffect(() => {
         toCheckOut();
+        // console.log(finalCart)
+        // console.log(clickUpDescription);
     })
 
     const submitForm = event => {
@@ -46,47 +71,30 @@ function CheckOut () {
         setCheckOut(true);
         console.log(name, surname, telephone)
 
-        // const json = JSON.stringify({
-        //     "name": "from react",
-        //     "content": "New Task Content",
-        //     "assignees": [
-        //         6764153
-        //     ],
-        //     "due_date": "1611577799000",
-        //     "priority": 1,
-        //     "description": "iahfkjbasldla asdlkasdlkasm das"
-        // });
-        // const res = await axios.post('https://api.clickup.com/api/v1/list/44542033/task', json, {
-        //     headers: {
-        //         'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
 
         async function postData(url = '', data = {}) {
             // Default options are marked with *
             const response = await fetch(url, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'no-cors', // no-cors, *cors, same-origin
+                // mode: 'no-cors', // no-cors, *cors, same-origin
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
                 },
                 body: JSON.stringify(data)
             });
             return response.json();
         }
 
-        postData('https://api.clickup.com/api/v2/list/44542033/task', {
-            name: "from react",
+        postData('/api/v2/list/44542033/task', {
+            name: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
             content: "New Task Content",
             assignees: [
-                6764153
+                6764141
             ],
-            due_date: "1611577799000",
-            priority: 1,
-            description: "iahfkjbasldla asdlkasdlkasm das" })
+            due_date: Math.floor(new Date().getTime()/1000.0) + '000',
+            priority: 3,
+            description: clickUpDescription })
             .then(data => {
                 console.log(data); // JSON data parsed by `data.json()` call
             });
