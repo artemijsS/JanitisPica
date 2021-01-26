@@ -1,4 +1,5 @@
 {
   "serverDev": "http://localhost:1337",
-  "serverProd": "https://young-ridge-27848.herokuapp.com"
+  "serverProd": "https://janitis-pica-back-end.herokuapp.com",
+  "newServer": "https://young-ridge-27848.herokuapp.com"
 }
