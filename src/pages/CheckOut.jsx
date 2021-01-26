@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Footer, Header} from "../components";
+import {Footer, Header, LoadingScreen} from "../components";
 import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {clearCart} from "../redux/actions/cart";
 import server from "../redux/serverSettings.json"
+import ReCAPTCHA from "react-google-recaptcha";
 
 function CheckOut () {
 
@@ -15,7 +16,10 @@ function CheckOut () {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [telephone, setTelephone] = useState('');
+    const [captcha, setCaptcha] = useState(false);
     const [checkOut, setCheckOut] = useState(false);
+    const [orderNumber, setOrderNumber] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     let finalCart = {
         items: [],
@@ -38,10 +42,8 @@ function CheckOut () {
             })
 
         })
-        // console.log(finalCart)
         //TODO Исправить время в дискрипшоне. 20:01 это 20:1...
         //TODO Сохранять форму для следующего заказа!
-        //TODO Добавить капчу!
         clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {
@@ -69,37 +71,14 @@ function CheckOut () {
     })
 
     const submitForm = event => {
+        if (!captcha) {
+            alert('Apstipriniet, ka jūs esat cilvēks');
+            return false;
+        }
+
+        setLoading(true);
         event.preventDefault();
-        setCheckOut(true);
         console.log(name, surname, telephone)
-
-
-        // async function postData(url = '', data = {}) {
-        //     // Default options are marked with *
-        //     const response = await fetch(url, {
-        //         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        //         // mode: 'no-cors', // no-cors, *cors, same-origin
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': 'pk_6764153_4995V2GZLEFID52PTAQNR48E4P9XNPA9',
-        //         },
-        //         body: JSON.stringify(data)
-        //     });
-        //     return response.json();
-        // }
-        // ///api/v2/list/44542033/task
-        // postData('/api/v2/list/44542033/task', {
-        //     name: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
-        //     content: "New Task Content",
-        //     assignees: [
-        //         6764141
-        //     ],
-        //     due_date: Math.floor(new Date().getTime()/1000.0) + '000',
-        //     priority: 3,
-        //     description: clickUpDescription })
-        //     .then(data => {
-        //         console.log(data); // JSON data parsed by `data.json()` call
-        //     });
 
 
         const body = {
@@ -121,7 +100,10 @@ function CheckOut () {
             };
             const response = await fetch(`${server.serverProd}/orders`, requestOptions);
             const data = await response.json();
-            console.log(data)
+            setLoading(false);
+            setOrderNumber(data.id);
+            setCheckOut(true);
+            console.log(data);
         }
         test();
     }
@@ -140,6 +122,9 @@ function CheckOut () {
                 <title>Grozs | Jānātīs pica</title>
             </Helmet>
             <Header activeIndex={null}/>
+            {loading &&
+                <LoadingScreen/>
+            }
             {checkOut &&
                 <div className="bg-overlay">
                     <div className="content">
@@ -148,7 +133,8 @@ function CheckOut () {
                                 <div className="order-card">
                                     <div className="thank-you">Paldies!</div>
                                     <div className="order-info">
-                                        Pasutījums ir saņemts, <span>mēs sazināsimies ar Jums tuvakajā laikā</span>,
+                                        Pasūtījuma numurs - <span>#{orderNumber}</span><br/>
+                                        Pasūtījums ir saņemts, <span>mēs sazināsimies ar Jums tuvakajā laikā</span>,
                                         lai apstiprināt pasutījumu
                                     </div>
                                     <div className="cart__bottom-buttons">
@@ -187,7 +173,7 @@ function CheckOut () {
                                         stroke="white" strokeWidth="1.8" strokeLinecap="round"
                                         strokeLinejoin="round"/>
                                 </svg>
-                                Pasutījumu noformēšana
+                                Pasūtījumu noformēšana
                             </h2>
                         </div>
                         <form id="form-checkOut" onSubmit={submitForm}>
@@ -195,6 +181,13 @@ function CheckOut () {
                                 <input placeholder="Vārds" type="text" id="name" onChange={e => {setName(e.target.value)}} required/>
                                 <input placeholder="Uzvārds" type="text" id="surname" onChange={e => {setSurname(e.target.value)}} required/>
                                 <input placeholder="Tālrunis" pattern="[0-9]*" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
+                                <div className="captcha">
+                                    <ReCAPTCHA
+                                        sitekey="6LdfkD0aAAAAAKJxNvG2T8sF9zt-bZ4yosOpKN_c"
+                                        onChange={() => setCaptcha(true)}
+                                        size="compact"
+                                    />
+                                </div>
                             </div>
                         </form>
                         <div className="cart__bottom">

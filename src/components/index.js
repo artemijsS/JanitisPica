@@ -9,3 +9,4 @@ export { default as LoadingPizzaBlock } from './productsComponents/LoadingPizzaB
 export { default as LoadingDrinkBlock } from './productsComponents/LoadingDrinks';
 export { default as CartItem } from './CartItem';
 export { default as UpButton } from './UpButton';
+export { default as LoadingScreen } from './LoadingScreen';

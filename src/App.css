@@ -1221,13 +1221,9 @@ a {
   font-size: 18px;
   margin-left: 5px;
 }
-#form-checkOut .vards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-#form-checkOut .talrunis input {
-  width: 100%;
+#form-checkOut .form .captcha {
+  width: 164px;
+  margin: 0 auto;
 }
 
             /*UP BUTTON*/
@@ -1256,8 +1252,8 @@ a {
 
 .pop-up-order {
   width: 100%;
-  min-height: 300px;
-  height: 40vh;
+  /*min-height: 300px;*/
+  /*height: 40vh;*/
   background-color: white;
   border-radius: 30px;
   min-width: 290px;
@@ -1281,6 +1277,7 @@ a {
   text-align: center;
   padding-top: 30px;
   font-size: 1.3rem;
+  line-height: 1.5em;
 }
 .order-info span {
   border-bottom: 1px solid red;
@@ -1288,6 +1285,7 @@ a {
 
 .order-card .cart__bottom-buttons {
   justify-content: center;
+  padding-bottom: 40px;
 }
 
 @media screen and (max-width: 500px) {
@@ -1310,4 +1308,50 @@ a {
   .cart__bottom .cart__bottom-buttons button span {
     font-size: 16px;
   }
+}
+
+        /*LOADING SCREEN*/
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg-overlay .loading-img {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  animation-name: loadingScreen;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /*animation-name: loadingScreen2;*/
+  /*animation-duration: 1s;*/
+  /*animation-iteration-count: infinite;*/
+  /*animation-timing-function: linear;*/
+}
+.bg-overlay .loading-img img {
+  width: 300px;
+  height: 300px;
+}
+
+@keyframes loadingScreen {
+  0%   {width: 300px; height: 300px}
+  25%  {width: 310px; height: 310px}
+  50%  {width: 320px; height: 320px}
+  75%  {width: 310px; height: 310px}
+  100% {width: 300px; height: 300px}
+}
+
+@keyframes loadingScreen2 {
+  0%   {left: 0}
+  25%  {left: 25%}
+  50%  {left: 50%}
+  75%  {left: 70%}
+  100% {left: 120%}
 }
