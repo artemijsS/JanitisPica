@@ -1301,3 +1301,13 @@ a {
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width: 850px) {
+  .cart__bottom .cart__bottom-buttons button {
+    padding: 10px;
+    width: 135px;
+  }
+  .cart__bottom .cart__bottom-buttons button span {
+    font-size: 16px;
+  }
+}
