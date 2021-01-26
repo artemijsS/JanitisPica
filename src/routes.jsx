@@ -23,7 +23,7 @@ export const useRoutes = () => {
             </Route>
             <Route path="/admin" exact>
                 {
-                    <a id="test" href="https://young-ridge-27848.herokuapp.com/admin" style={{margin:"auto"}}>test</a>
+                    <a id="test" href="https://janitis-pica-back-end.herokuapp.com/admin" style={{margin:"auto"}}>test</a>
                 }
             </Route>
             {

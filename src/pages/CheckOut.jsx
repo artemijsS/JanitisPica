@@ -41,6 +41,7 @@ function CheckOut () {
         // console.log(finalCart)
         //TODO Исправить время в дискрипшоне. 20:01 это 20:1...
         //TODO Сохранять форму для следующего заказа!
+        //TODO Добавить капчу!
         clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {
