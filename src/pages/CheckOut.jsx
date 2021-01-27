@@ -43,6 +43,7 @@ function CheckOut () {
 
         })
         //TODO заказ на эмайл покупателя
+        //TODO сделать загрузочный блок каптчи
         clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {

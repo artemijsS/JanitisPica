@@ -1355,3 +1355,27 @@ a {
   75%  {left: 70%}
   100% {left: 120%}
 }
+
+                      /*CONTACTS*/
+.contacts .content__top {
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+.info, .darba-laiki{
+  font-size: 1.3em;
+  margin-top: 30px;
+}
+.info span, .darba-laiki span {
+  font-weight: bold;
+  color: red;
+}
+.info a {
+  border-bottom: 1px dotted red;
+}
+
+@media screen and (max-width: 850px){
+  .info, .darba-laiki{
+    font-size: 1.15em;
+    margin-top: 30px;
+  }
+}
