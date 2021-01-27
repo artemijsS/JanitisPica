@@ -14,7 +14,7 @@ function CheckOut () {
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart)
 
     const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
     const [telephone, setTelephone] = useState('');
     const [captcha, setCaptcha] = useState(false);
     const [checkOut, setCheckOut] = useState(false);
@@ -27,6 +27,7 @@ function CheckOut () {
         totalCount: totalCount
     }
     let clickUpDescription = '';
+    let EmailDescription = '';
 
     const toCheckOut = () => {
 
@@ -42,24 +43,30 @@ function CheckOut () {
             })
 
         })
-        //TODO заказ на эмайл покупателя
-        //TODO сделать загрузочный блок каптчи
-        clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
+        clickUpDescription = name + "    " + email + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {
             clickUpDescription += (i+1) + ') ';
+            EmailDescription += (i+1) + ') ';
             let tmp = Object.keys(finalCart.items[i]);
             let product = finalCart.items[i][tmp[0]]
             // console.log("   ! "+ product.name + "  ")
             clickUpDescription += "id-" + product.id + "  ";
             clickUpDescription += product.name + "  ";
-            if (product.finalSize)
+            EmailDescription += product.name + "  ";
+            if (product.finalSize) {
                 clickUpDescription += product.finalSize + "cm";
+                EmailDescription += product.finalSize + "cm";
+            }
             clickUpDescription += " | daudzums - " + finalCart.items[i].totalCount + " , cena - " + finalCart.items[i].totalPrice;
+            EmailDescription += " | daudzums - " + finalCart.items[i].totalCount + " , cena - " + finalCart.items[i].totalPrice + " EUR";
             clickUpDescription += '\n';
+            EmailDescription += '<br>';
         }
         clickUpDescription += '==============================================================================\n'
+        EmailDescription += '<br><br><br>'
         clickUpDescription += '                Daudzums - ' + finalCart.totalCount + '         Kopsumma - ' + finalCart.totalPrice + ' EUR'
+        EmailDescription += '                Daudzums - ' + finalCart.totalCount + '         Kopsumma - ' + finalCart.totalPrice + ' EUR'
     }
 
 
@@ -78,7 +85,6 @@ function CheckOut () {
 
         setLoading(true);
         event.preventDefault();
-        console.log(name, surname, telephone)
 
         let minutes = new Date().getMinutes();
         if (minutes < 10) {
@@ -87,13 +93,15 @@ function CheckOut () {
 
         const body = {
             title: new Date().getHours() + ":" + minutes + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | tel - " + telephone,
+            email: email,
             content: "New Task Content",
             assignees: [
                 6764141
             ],
             due_date: Math.floor(new Date().getTime()/1000.0) + '000',
             priority: 3,
-            description: clickUpDescription
+            description: clickUpDescription,
+            descriptionForEmail: EmailDescription
         }
 
         async function createOrder() {
@@ -183,7 +191,7 @@ function CheckOut () {
                         <form id="form-checkOut" onSubmit={submitForm}>
                             <div className="form">
                                 <input placeholder="Vārds" type="text" id="name" onChange={e => {setName(e.target.value)}} required/>
-                                <input placeholder="Uzvārds" type="text" id="surname" onChange={e => {setSurname(e.target.value)}} required/>
+                                <input placeholder="E-pasts" type="email" id="email" onChange={e => {setEmail(e.target.value)}} required/>
                                 <input placeholder="Tālrunis" pattern="[0-9]*" minLength="6" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
                                 <div className="captcha">
                                     <ReCAPTCHA

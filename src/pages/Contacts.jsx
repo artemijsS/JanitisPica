@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 function Contacts () {
 
     const [mapLoading, setMapLoading] = useState(true);
-
+    //TODO Сделать форму "Связаться с нами"
     return (
         <div>
             <Helmet>
@@ -17,10 +17,6 @@ function Contacts () {
                 <div className="container">
                     <div className="contacts">
                         <div className="content__top">
-                            <div className="info">
-                                <span>Telefons:</span> <a href="tel:+37125961042">+371 25961042</a><br/>
-                                E-mail: <a href="mailto:picajanitis@gmail.com">picajanitis@gmail.com</a><br/>
-                            </div>
                             <div className="darba-laiki">
                                 P. - <span>slēgts</span><br/>
                                 O. - 10:00-19:00<br/>
@@ -30,6 +26,11 @@ function Contacts () {
                                 S. - 10:00-19:00<br/>
                                 Sv. - <span>slēgts</span><br/>
                             </div>
+                            <div className="info">
+                                <span>Telefons:</span> <a href="tel:+37125961042">+371 25961042</a><br/>
+                                E-mail: <a href="mailto:picajanitis@gmail.com">picajanitis@gmail.com</a><br/>
+                            </div>
+
                         </div>
                     </div>
                     { mapLoading &&
