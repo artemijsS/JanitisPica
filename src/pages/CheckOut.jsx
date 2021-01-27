@@ -42,8 +42,7 @@ function CheckOut () {
             })
 
         })
-        //TODO Исправить время в дискрипшоне. 20:01 это 20:1...
-        //TODO Сохранять форму для следующего заказа!
+        //TODO заказ на эмайл покупателя
         clickUpDescription = name + "    " + surname + "    tel - " + telephone + "\n";
 
         for (let i = 0; i < finalCart.items.length; i++) {
@@ -80,9 +79,13 @@ function CheckOut () {
         event.preventDefault();
         console.log(name, surname, telephone)
 
+        let minutes = new Date().getMinutes();
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
 
         const body = {
-            title: new Date().getHours() + ":" + new Date().getMinutes() + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | telephone - " + telephone,
+            title: new Date().getHours() + ":" + minutes + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | tel - " + telephone,
             content: "New Task Content",
             assignees: [
                 6764141
@@ -92,7 +95,7 @@ function CheckOut () {
             description: clickUpDescription
         }
 
-        async function test() {
+        async function createOrder() {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -105,7 +108,7 @@ function CheckOut () {
             setCheckOut(true);
             console.log(data);
         }
-        test();
+        createOrder();
     }
 
     const onClearCart = () => {
@@ -180,7 +183,7 @@ function CheckOut () {
                             <div className="form">
                                 <input placeholder="Vārds" type="text" id="name" onChange={e => {setName(e.target.value)}} required/>
                                 <input placeholder="Uzvārds" type="text" id="surname" onChange={e => {setSurname(e.target.value)}} required/>
-                                <input placeholder="Tālrunis" pattern="[0-9]*" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
+                                <input placeholder="Tālrunis" pattern="[0-9]*" minLength="6" type="tel" id="phone" onChange={e => {setTelephone(e.target.value)}} required/>
                                 <div className="captcha">
                                     <ReCAPTCHA
                                         sitekey="6LdfkD0aAAAAAKJxNvG2T8sF9zt-bZ4yosOpKN_c"
