@@ -92,7 +92,7 @@ function CheckOut () {
         }
 
         const body = {
-            title: new Date().getHours() + ":" + minutes + "   Jauns pasutījums " + new Date().getDay() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | tel - " + telephone,
+            title: new Date().getHours() + ":" + minutes + "   Jauns pasutījums " + new Date().getDate() + "/" + (new Date().getMonth() + 1)  + "/" + new Date().getFullYear() + " | tel - " + telephone,
             email: email,
             content: "New Task Content",
             assignees: [
