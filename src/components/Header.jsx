@@ -15,7 +15,7 @@ export const Header = ({ activeIndex }) => {
     const onSelectedItem = (index) => {
         setActiveItem(index);
     }
-
+    //TODO пофиксить меню на айфонах
     function onClickMenu() {
         document.getElementById("menu").classList.toggle("change");
         document.getElementById("nav_opened").classList.toggle("change");

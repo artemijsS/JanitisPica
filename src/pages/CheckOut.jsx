@@ -50,7 +50,6 @@ function CheckOut () {
             EmailDescription += (i+1) + ') ';
             let tmp = Object.keys(finalCart.items[i]);
             let product = finalCart.items[i][tmp[0]]
-            // console.log("   ! "+ product.name + "  ")
             clickUpDescription += "id-" + product.id + "  ";
             clickUpDescription += product.name + "  ";
             EmailDescription += product.name + "  ";
@@ -115,7 +114,7 @@ function CheckOut () {
             setLoading(false);
             setOrderNumber(data.id);
             setCheckOut(true);
-            console.log(data);
+            // console.log(data);
         }
         createOrder();
     }
