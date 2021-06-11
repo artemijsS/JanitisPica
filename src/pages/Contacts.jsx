@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Footer, Header, LoadingMap} from "../components";
 import { Helmet } from 'react-helmet';
 
@@ -6,6 +6,11 @@ import { Helmet } from 'react-helmet';
 function Contacts () {
 
     const [mapLoading, setMapLoading] = useState(true);
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
+
     //TODO Сделать форму "Связаться с нами"
     return (
         <div>
